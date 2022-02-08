@@ -1,18 +1,19 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app/App';
-import { store } from './bll/store';
 import { Provider } from 'react-redux';
+
+import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 
+import { store } from 'bll/store';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
 );
 
 // If you want your bll to work offline and load faster, you can change

@@ -1,6 +1,13 @@
 import React from 'react';
-import './App.css';
 
-const App = () => <div>content</div>;
+import s from './App.module.scss';
+
+import { MenuBar } from 'features/MenuBar';
+
+const App = () => (
+  <div className={s.app}>
+    <MenuBar />
+  </div>
+);
 
 export default App;
