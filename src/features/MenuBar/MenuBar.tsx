@@ -34,9 +34,8 @@ export const MenuBar = () => {
       title: '',
       type,
     },
-    onSubmit: async values => {
-      const res = await dispatch(findMovies(values));
-      console.log(res);
+    onSubmit: values => {
+      dispatch(findMovies(values));
     },
   });
 
