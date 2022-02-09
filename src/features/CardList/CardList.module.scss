@@ -1,0 +1,13 @@
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+
+  .item {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+  }
+}

@@ -1,10 +1,7 @@
 .barContainer {
+  margin: 50px auto 50px;
   display: flex;
   align-items: center;
-  position: relative;
-  top: 40%;
-  transform: translate(0, -50%);
-  margin: 0 auto;
   width: 40%;
   border: 1px solid black;
   border-radius: 7px;
