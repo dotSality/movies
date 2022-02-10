@@ -2,7 +2,15 @@ import React from 'react';
 
 import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
 import LoadingButton from '@mui/lab/LoadingButton/LoadingButton';
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  useMediaQuery,
+} from '@mui/material';
 import { useFormik } from 'formik';
 
 import s from './MenuBar.module.scss';
@@ -13,6 +21,8 @@ import { findMovies, FindMoviesDataType } from 'bll/slices/movies-slice';
 
 export const MenuBar = () => {
   const dispatch = useAppDispatch();
+  const size = useMediaQuery('(min-width: 500px)');
+  const picture = useMediaQuery('(min-width: 360px)');
 
   const { status } = useAppSelector(state => state.app);
 
@@ -34,7 +44,9 @@ export const MenuBar = () => {
   return (
     <form onSubmit={formik.handleSubmit} className={s.barContainer}>
       <Box sx={{ display: 'flex', alignItems: 'flex-end', width: '70%' }}>
-        <MovieCreationOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        {picture && (
+          <MovieCreationOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        )}
         <TextField
           sx={{ width: '100%', margin: '0 10px' }}
           id="input-with-sx"
@@ -45,7 +57,7 @@ export const MenuBar = () => {
         />
       </Box>
 
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: size ? 120 : 80 }}>
         <InputLabel id="demo-simple-select-standard-label"> </InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -62,7 +74,7 @@ export const MenuBar = () => {
       </FormControl>
 
       <LoadingButton
-        size="large"
+        size={size ? 'large' : 'medium'}
         loading={status === 'loading'}
         variant="contained"
         type="submit"
