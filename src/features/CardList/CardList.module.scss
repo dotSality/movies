@@ -1,13 +1,27 @@
-.itemContainer {
+.cardListContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-  .item {
+  .menuContainer {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+
+  .itemContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
     justify-content: center;
-    margin: 100px;
+
+    .item {
+      display: flex;
+      justify-content: center;
+      margin: 100px;
+    }
   }
 }

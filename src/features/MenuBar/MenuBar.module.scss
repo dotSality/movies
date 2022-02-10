@@ -1,8 +1,9 @@
 .barContainer {
+  box-sizing: border-box;
   margin: 50px auto 50px;
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 100%;
   border: 1px solid black;
   border-radius: 7px;
   padding: 20px;
