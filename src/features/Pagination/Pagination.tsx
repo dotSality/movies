@@ -38,11 +38,13 @@ export const Pagination = ({ title, type }: PropsType) => {
 
   const mappedPages = pages.map((el, i) => (
     <Button
-      sx={{ marginLeft: i === 0 ? '16px' : '0' }}
+      sx={{
+        marginLeft: i === 0 ? '16px' : '0',
+      }}
       key={el}
       onClick={() => onPageChange(el)}
       size="large"
-      variant="outlined"
+      variant={el === page ? 'contained' : 'outlined'}
     >
       {el}
     </Button>
