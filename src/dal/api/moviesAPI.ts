@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FindMoviesDataType, MovieType } from 'bll/slices/movies-slice';
 
 const instance = axios.create({
-  baseURL: 'http://www.omdbapi.com',
+  baseURL: 'https://www.omdbapi.com',
 });
 const apikey = '2d429144';
 const defaultPage: number = 1;
