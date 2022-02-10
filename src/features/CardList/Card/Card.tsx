@@ -1,10 +1,18 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import { useAppDispatch } from 'bll/hooks';
 import { MovieType, openMovie } from 'bll/slices/movies-slice';
 
 export const CardItem = ({ Poster, Title, Year }: Omit<MovieType, 'Type' | 'imdbID'>) => {
+  const matches = useMediaQuery('(max-width: 500px)');
   const dispatch = useAppDispatch();
 
   const fetchMovie = () => {
@@ -18,7 +26,7 @@ export const CardItem = ({ Poster, Title, Year }: Omit<MovieType, 'Type' | 'imdb
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '20px',
-        width: 400,
+        width: matches ? 260 : 400,
       }}
     >
       <div>
@@ -28,7 +36,7 @@ export const CardItem = ({ Poster, Title, Year }: Omit<MovieType, 'Type' | 'imdb
             backgroundImage: `url(${Poster})`,
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
-            height: '300px',
+            height: matches ? '240' : '300px',
           }}
         />
         <CardContent>

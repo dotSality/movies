@@ -23,7 +23,7 @@ export const Pagination = ({ title, type }: PropsType) => {
         pages.push(i);
       }
     } else if (currentPage > 6 && currentPage < pagesCount - 6) {
-      for (let i = currentPage - 5; i < currentPage + 4; i += 1) {
+      for (let i = currentPage - 4; i <= currentPage + 4; i += 1) {
         pages.push(i);
       }
     } else {
@@ -36,15 +36,31 @@ export const Pagination = ({ title, type }: PropsType) => {
   const onPageChange = (nextPage: number) =>
     dispatch(findMovies({ findData: { title, type }, page: nextPage }));
 
-  const mappedPages = pages.map(el => (
-    <Button key={el} onClick={() => onPageChange(el)} size="large" variant="outlined">
+  const mappedPages = pages.map((el, i) => (
+    <Button
+      sx={{ marginLeft: i === 0 ? '16px' : '0' }}
+      key={el}
+      onClick={() => onPageChange(el)}
+      size="large"
+      variant="outlined"
+    >
       {el}
     </Button>
   ));
 
   return (
     <div className={s.paginator}>
-      <Stack spacing={2} direction="row">
+      <Stack
+        sx={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          margin: '0 10px',
+        }}
+        spacing={2}
+        direction="row"
+      >
         {mappedPages}
       </Stack>
     </div>

@@ -3,11 +3,33 @@
   flex-direction: column;
   align-items: center;
 
+  width: 100%;
+
   .menuContainer {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 40%;
+
+    @media screen and (max-width: 1400px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 1090px) {
+      width: 60%;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 95%;
+    }
   }
 
 
@@ -22,6 +44,15 @@
       display: flex;
       justify-content: center;
       margin: 100px;
+
+      @media screen and (max-width: 1400px) {
+        margin: 50px;
+      }
+
+      @media screen and (max-width: 1090px) {
+        margin: 30px;
+      }
+
     }
   }
 }
