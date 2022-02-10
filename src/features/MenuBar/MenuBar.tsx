@@ -8,7 +8,8 @@ import { useFormik } from 'formik';
 import s from './MenuBar.module.scss';
 
 import { useAppDispatch, useAppSelector } from 'bll/hooks';
-import { findMovies } from 'bll/slices/movies-slice';
+import { setAppError } from 'bll/slices/app-slice';
+import { findMovies, FindMoviesDataType } from 'bll/slices/movies-slice';
 
 export const MenuBar = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,11 @@ export const MenuBar = () => {
     initialValues: {
       title: '',
       type: 'Movie',
+    },
+    validate: values => {
+      const errors: Partial<FindMoviesDataType> = {};
+      if (!values.title) dispatch(setAppError('Enter Title'));
+      return errors;
     },
     onSubmit: values => {
       dispatch(findMovies({ findData: values, page: 1 }));
@@ -35,6 +41,7 @@ export const MenuBar = () => {
           label="Enter title..."
           variant="standard"
           {...formik.getFieldProps('title')}
+          onBlur={() => {}}
         />
       </Box>
 

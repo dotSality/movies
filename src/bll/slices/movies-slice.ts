@@ -27,7 +27,10 @@ export const findMovies = createAsyncThunk<
         return { movies: res.data, page: data.page };
       }
       dispatch(setAppStatus('failed'));
-      return rejectWithValue({ Response: res.data.Response, Error: res.data.Error });
+      return rejectWithValue({
+        Response: res.data.Response,
+        Error: res.data.Error !== 'Incorrect IMDb ID.' ? res.data.Error : 'Enter title',
+      });
     } catch (e: any) {
       return rejectWithValue(e.message);
     }

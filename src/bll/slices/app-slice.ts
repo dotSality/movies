@@ -26,6 +26,9 @@ const slice = createSlice({
     builder.addCase(findMovies.rejected, (state, action) => {
       if (action.payload) state.error = action.payload?.Error;
     });
+    builder.addCase(findMovies.pending, state => {
+      state.error = null;
+    });
   },
 });
 

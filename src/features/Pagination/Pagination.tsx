@@ -18,16 +18,16 @@ export const Pagination = ({ title, type }: PropsType) => {
   if (totalResults && page) {
     const pagesCount = Math.ceil(totalResults / moviesOnPage);
     const currentPage = page;
-    if (currentPage && pagesCount <= 10) {
+    if (currentPage && pagesCount <= 9) {
       for (let i = 1; i <= pagesCount; i += 1) {
         pages.push(i);
       }
     } else if (currentPage > 6 && currentPage < pagesCount - 6) {
-      for (let i = currentPage - 5; i < currentPage + 5; i += 1) {
+      for (let i = currentPage - 5; i < currentPage + 4; i += 1) {
         pages.push(i);
       }
     } else {
-      for (let i = pagesCount - 10; i <= pagesCount; i += 1) {
+      for (let i = currentPage; i < currentPage + 9; i += 1) {
         pages.push(i);
       }
     }
