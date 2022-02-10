@@ -6,11 +6,12 @@ const instance = axios.create({
   baseURL: 'http://www.omdbapi.com',
 });
 const apikey = '2d429144';
+const defaultPage: number = 1;
 
 export const moviesAPI = {
-  getMovies(data: FindMoviesDataType) {
+  getMovies(data: FindMoviesDataType, page = defaultPage) {
     return instance.get<GetMoviesResponseType & FindRejectType>(
-      `?apikey=${apikey}&s=${data.title}&type=${data.type}`,
+      `?apikey=${apikey}&s=${data.title}&type=${data.type}&page=${page}`,
     );
   },
   getCurrentMovie(title: string) {

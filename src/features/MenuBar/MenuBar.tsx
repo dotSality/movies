@@ -2,15 +2,7 @@ import React from 'react';
 
 import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
 import LoadingButton from '@mui/lab/LoadingButton/LoadingButton';
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from '@mui/material';
+import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 
 import s from './MenuBar.module.scss';
@@ -19,23 +11,17 @@ import { useAppDispatch, useAppSelector } from 'bll/hooks';
 import { findMovies } from 'bll/slices/movies-slice';
 
 export const MenuBar = () => {
-  const [type, setType] = React.useState('Movie');
-
   const dispatch = useAppDispatch();
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setType(event.target.value);
-  };
 
   const { status } = useAppSelector(state => state.app);
 
   const formik = useFormik({
     initialValues: {
       title: '',
-      type,
+      type: 'Movie',
     },
     onSubmit: values => {
-      dispatch(findMovies(values));
+      dispatch(findMovies({ findData: values, page: 1 }));
     },
   });
 
@@ -57,8 +43,8 @@ export const MenuBar = () => {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={type}
-          onChange={handleChange}
+          value={formik.values.type}
+          onChange={formik.handleChange}
           label="type"
           name="type"
         >
